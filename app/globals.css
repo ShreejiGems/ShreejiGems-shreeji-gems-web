@@ -1,0 +1,136 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+:root {
+  --background: #ffffff; /* White background */
+  --foreground: #171717; /* Dark text */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+  font-family: "Futura Bk BT";
+  src: url("/public/fonts/FuturaBkBT.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Futura Bk BT", sans-serif;
+}
+
+/* Animation for fade-in */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+/* Scrollbar design */
+.scrollbar::-webkit-scrollbar,
+.ant-table-body::-webkit-scrollbar {
+  width: 5px !important;
+  height: 100% !important;
+}
+
+.scrollbar::-webkit-scrollbar-thumb,
+.ant-table-body::-webkit-scrollbar-thumb {
+  background-color: #e5e5e5 !important;
+  border-radius: 3px !important;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover,
+.ant-table-body::-webkit-scrollbar-thumb:hover {
+  background-color: #ababab !important;
+}
+
+/* Button design with  */
+.button-hover-effect {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.button-hover-effect .icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translate(50%, -50%);
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 1, 0.8, 1);
+  pointer-events: none;
+}
+
+.button-hover-effect:hover .icon {
+  transform: translate(0, -50%);
+  opacity: 1;
+}
+
+.button-hover-effect span {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.8, 1);
+}
+
+.button-hover-effect:hover span {
+  transform: translateX(-10px);
+}
+
+@keyframes moving-thread {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+/* Checked background */
+.orange-checkbox .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #f97316 !important; /* orange-600 */
+  border-color: #f97316 !important;
+}
+
+/* Hover */
+.orange-checkbox .ant-checkbox-wrapper:hover .ant-checkbox-inner {
+  border-color: #f97316;
+}
+
+/* Check mark color */
+.orange-checkbox .ant-checkbox-inner::after {
+  border-color: white;
+}
